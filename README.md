@@ -23,3 +23,19 @@ PLACERA is a Django-based campus placement platform that helps students track th
 
 ```text
 Applied → Shortlisted → Assessment → Technical → HR → Offer
+## Screenshots
+
+### Landing Page
+![Landing Page](SCREENSHOTS/landing.PNG)
+
+### Dashboard
+![Dashboard](SCREENSHOTS/dashboard.png)
+
+### Applications
+![Applications](SCREENSHOTS/application.PNG)
+
+### Analysis
+![Analysis](SCREENSHOTS/analysis.PNG)
+
+### Profile
+![Profile](SCREENSHOTS/profile.PNG)
