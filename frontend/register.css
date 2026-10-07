@@ -1,0 +1,531 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #050914;
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.register-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    background-color: #050914;
+}
+
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.left-section {
+    width: 50%;
+
+    min-height: 100vh;
+
+    padding: 30px 70px;
+
+    background-color: #060c19;
+
+    border-right: 1px solid #21466e;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    letter-spacing: 10px;
+}
+
+
+.logo span {
+    color: #2e86eb;
+}
+
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.left-content {
+    margin-top: 110px;
+}
+
+
+.small-heading {
+    color: #9fc4f5;
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 45px;
+}
+
+
+/* Heading */
+
+.left-content h1 {
+    font-size: 72px;
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+
+.left-content h1 span {
+    color: #2d7fe3;
+}
+
+
+/* Description */
+
+.description {
+    color: #c2cad6;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    max-width: 680px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+.feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.feature-icon {
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 26px;
+
+    background-color: #0c1e35;
+
+    border: 1px solid #1c4d80;
+}
+
+
+.feature h3 {
+    font-size: 22px;
+
+    margin-bottom: 6px;
+}
+
+
+.feature p {
+    color: #b2bdcb;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.right-section {
+    width: 50%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px 40px;
+
+    background-color: #142033;
+}
+
+
+/* =========================
+   REGISTER CARD
+========================= */
+
+.register-card {
+    width: 100%;
+
+    max-width: 620px;
+
+    padding: 30px 55px;
+
+    border-radius: 20px;
+
+    border: 1px solid #31557d;
+
+    background-color: #142033;
+
+    text-align: center;
+}
+
+
+.register-card h2 {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+
+.subtitle {
+    color: #c1cad6;
+
+    font-size: 18px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs {
+    width: 100%;
+
+    display: flex;
+
+    margin-bottom: 28px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    border: 1px solid #345675;
+}
+
+
+.tab {
+    width: 50%;
+
+    padding: 16px;
+
+    text-decoration: none;
+
+    color: #d1d7df;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+
+.tab.active {
+    color: white;
+
+    background: linear-gradient(
+        90deg,
+        #438de7,
+        #1765ca
+    );
+}
+
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.input-box {
+    width: 100%;
+
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 20px;
+
+    margin-bottom: 14px;
+
+    border-radius: 16px;
+
+    border: 1px solid #385a79;
+
+    background-color: #1c2a3d;
+}
+
+
+.input-icon {
+    font-size: 20px;
+
+    margin-right: 16px;
+}
+
+
+.input-box input {
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 18px;
+}
+
+
+.input-box input::placeholder {
+    color: #bdc5d0;
+}
+
+
+/* =========================
+   CREATE ACCOUNT BUTTON
+========================= */
+
+.create-btn {
+    width: 100%;
+
+    height: 70px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    background: linear-gradient(
+        90deg,
+        #438de7,
+        #1765ca
+    );
+
+    transition: 0.3s;
+}
+
+
+.create-btn:hover {
+    transform: scale(1.02);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin: 25px 0;
+}
+
+
+.divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background-color: #45617e;
+}
+
+
+.divider p {
+    color: #c5ccd5;
+}
+
+
+/* =========================
+   SOCIAL BUTTONS
+========================= */
+
+.social-btn {
+    width: 100%;
+
+    height: 58px;
+
+    margin-bottom: 12px;
+
+    border-radius: 14px;
+
+    border: 1px solid #3c5c7a;
+
+    background-color: #1c2a3d;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+.social-btn strong {
+    color: #4b9cff;
+
+    font-size: 22px;
+
+    margin-right: 18px;
+}
+
+
+/* =========================
+   LOGIN TEXT
+========================= */
+
+.login-text {
+    margin-top: 15px;
+
+    color: #c3cbd5;
+
+    font-size: 16px;
+}
+
+
+.login-text a {
+    color: #4b9cff;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    margin-left: 5px;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .left-section {
+        display: none;
+    }
+
+
+    .right-section {
+        width: 100%;
+
+        padding: 25px 15px;
+    }
+
+
+    .register-card {
+        max-width: 600px;
+
+        padding: 30px 25px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .register-card {
+        padding: 25px 18px;
+    }
+
+
+    .register-card h2 {
+        font-size: 28px;
+    }
+
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+
+    .input-box {
+        height: 55px;
+    }
+
+
+    .create-btn {
+        height: 58px;
+
+        font-size: 18px;
+    }
+
+
+    .social-btn {
+        height: 52px;
+
+        font-size: 15px;
+    }
+
+}

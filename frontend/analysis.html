@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PLACERA - Analysis</title>
+
+    <link rel="stylesheet" href="/analysis.css?v=2">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="/dashboard.html">PLACERA</a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/applications.html">Applications</a>
+            <a href="/analysis.html" class="active">Analysis</a>
+            <a href="/profile.html">Profile</a>
+        </nav>
+
+        <button class="logout-btn" onclick="logoutUser()">
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="analysis-container">
+
+        <!-- Page Heading -->
+        <section class="page-header">
+
+            <div>
+                <p class="small-title">PLACERA ANALYTICS</p>
+
+                <h1>
+                    Placement Performance
+                    <span>Analysis</span>
+                </h1>
+
+                <p class="page-description">
+                    Understand your placement journey, identify weak areas,
+                    and improve your chances of getting placed.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY CARDS ================= -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">📨</div>
+
+                <div>
+                    <p>Total Applications</p>
+                    <h2 id="totalApplications">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+
+                <div>
+                    <p>Interviews</p>
+                    <h2 id="totalInterviews">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+
+                <div>
+                    <p>Offers</p>
+                    <h2 id="totalOffers">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+
+                <div>
+                    <p>Rejected</p>
+                    <h2 id="totalRejected">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= PERFORMANCE ================= -->
+        <section class="analysis-section">
+
+            <div class="section-heading">
+                <h2>Performance Overview</h2>
+
+                <p>
+                    Your current placement performance based on your applications.
+                </p>
+            </div>
+
+
+            <div class="performance-grid">
+
+                <!-- Conversion Rate -->
+                <div class="analysis-card">
+
+                    <div class="card-header">
+                        <h3>Application Conversion</h3>
+                    </div>
+
+                    <div class="progress-container">
+
+                        <div class="progress-label">
+                            <span>Interview Rate</span>
+                            <strong id="interviewRate">0%</strong>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div
+                                class="progress-fill"
+                                id="interviewProgress">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-container">
+
+                        <div class="progress-label">
+                            <span>Offer Rate</span>
+                            <strong id="offerRate">0%</strong>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div
+                                class="progress-fill"
+                                id="offerProgress">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Status Breakdown -->
+                <div class="analysis-card">
+
+                    <div class="card-header">
+                        <h3>Application Status</h3>
+                    </div>
+
+                    <div class="status-list">
+
+                        <div class="status-item">
+                            <span class="status-dot applied"></span>
+                            <span>Applied</span>
+                            <strong id="appliedCount">0</strong>
+                        </div>
+
+                        <div class="status-item">
+                            <span class="status-dot interview"></span>
+                            <span>Interview</span>
+                            <strong id="interviewCount">0</strong>
+                        </div>
+
+                        <div class="status-item">
+                            <span class="status-dot offer"></span>
+                            <span>Offer</span>
+                            <strong id="offerCount">0</strong>
+                        </div>
+
+                        <div class="status-item">
+                            <span class="status-dot rejected"></span>
+                            <span>Rejected</span>
+                            <strong id="rejectedCount">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WEAKNESS ANALYSIS ================= -->
+        <section class="analysis-section">
+
+            <div class="section-heading">
+                <h2>Weakness Analysis</h2>
+
+                <p>
+                    Identify the areas where you are facing the most difficulty.
+                </p>
+            </div>
+
+
+            <div class="weakness-card">
+
+                <div class="weakness-icon">
+                    🔍
+                </div>
+
+                <div class="weakness-content">
+
+                    <h3 id="weaknessTitle">
+                        Analyzing your performance...
+                    </h3>
+
+                    <p id="weaknessDescription">
+                        We will analyze your rejected applications and
+                        identify common rejection reasons.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Rejection Reasons -->
+            <div class="rejection-box">
+
+                <h3>Rejection Reasons</h3>
+
+                <div id="rejectionReasons">
+
+                    <div class="empty-analysis">
+                        No rejection data available yet.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILL ANALYSIS ================= -->
+        <section class="analysis-section">
+
+            <div class="section-heading">
+
+                <h2>Skill Analysis</h2>
+
+                <p>
+                    Check your current skills and identify areas that need improvement.
+                </p>
+
+            </div>
+
+
+            <div class="skill-analysis-card">
+
+                <div class="skill-header">
+
+                    <h3>Your Skills</h3>
+
+                    <span id="skillLevel">
+                        Beginner
+                    </span>
+
+                </div>
+
+
+                <div id="skillsList" class="skills-list">
+
+                    <div class="empty-analysis">
+                        Loading skills...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMPROVEMENT SUGGESTIONS ================= -->
+        <section class="analysis-section">
+
+            <div class="section-heading">
+
+                <h2>Personalized Improvement Suggestions</h2>
+
+                <p>
+                    Based on your placement performance, here are some areas
+                    you can focus on.
+                </p>
+
+            </div>
+
+
+            <div id="suggestionsContainer" class="suggestions-grid">
+
+                <div class="suggestion-card">
+
+                    <div class="suggestion-icon">
+                        💡
+                    </div>
+
+                    <div>
+                        <h3>Keep applying</h3>
+
+                        <p>
+                            Continue applying to relevant placement opportunities
+                            to increase your chances of getting shortlisted.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="suggestion-card">
+
+                    <div class="suggestion-icon">
+                        💻
+                    </div>
+
+                    <div>
+                        <h3>Practice coding</h3>
+
+                        <p>
+                            Regular coding practice can help improve your
+                            technical interview performance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="suggestion-card">
+
+                    <div class="suggestion-icon">
+                            🎤
+                    </div>
+
+                    <div>
+                        <h3>Prepare for interviews</h3>
+
+                        <p>
+                            Practice technical and HR interview questions
+                            regularly.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= APPLICATION JOURNEY ================= -->
+        <section class="analysis-section">
+
+            <div class="section-heading">
+
+                <h2>Application Journey</h2>
+
+                <p>
+                    Track how your applications move through different stages.
+                </p>
+
+            </div>
+
+
+            <div class="journey">
+
+                <div class="journey-step">
+
+                    <div class="journey-number">1</div>
+
+                    <h3>Applied</h3>
+
+                    <p>
+                        Applications submitted
+                    </p>
+
+                    <strong id="journeyApplied">0</strong>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-number">2</div>
+
+                    <h3>Shortlisted</h3>
+
+                    <p>
+                        Candidates shortlisted
+                    </p>
+
+                    <strong id="journeyShortlisted">0</strong>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-number">3</div>
+
+                    <h3>Assessment</h3>
+
+                    <p>
+                        Assessments completed
+                    </p>
+
+                    <strong id="journeyAssessment">0</strong>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-number">4</div>
+
+                    <h3>Technical</h3>
+
+                    <p>
+                        Technical rounds
+                    </p>
+
+                    <strong id="journeyTechnical">0</strong>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-number">5</div>
+
+                    <h3>HR</h3>
+
+                    <p>
+                        HR rounds
+                    </p>
+
+                    <strong id="journeyHR">0</strong>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-number">6</div>
+
+                    <h3>Offer</h3>
+
+                    <p>
+                        Offers received
+                    </p>
+
+                    <strong id="journeyOffer">0</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOADING ================= -->
+        <div id="loadingMessage" class="loading-message">
+            Loading analysis...
+        </div>
+
+
+        <!-- ================= ERROR ================= -->
+        <div id="errorMessage" class="error-message"></div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <h2>PLACERA</h2>
+
+            <p>
+                Your placement era starts here.
+            </p>
+
+            <p class="copyright">
+                © 2026 PLACERA. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Analysis JavaScript -->
+    <script src="/analysis.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PLACERA | Skills</title>
+
+    <link rel="stylesheet" href="skills.css">
+</head>
+
+<body>
+
+    <div class="skills-page">
+
+        <div class="skills-card">
+
+            <div class="logo">
+                PL<span>A</span>CER<span>A</span>
+            </div>
+
+            <h1>Your Skills</h1>
+
+            <p class="subtitle">
+                Select the skills you currently have
+            </p>
+
+
+            <form id="skillsForm">
+
+                <!-- SKILLS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Technical Skills
+                    </label>
+
+                    <div class="skills-grid">
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="Python"
+                            >
+                            Python
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="Java"
+                            >
+                            Java
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="JavaScript"
+                            >
+                            JavaScript
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="HTML"
+                            >
+                            HTML
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="CSS"
+                            >
+                            CSS
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="React"
+                            >
+                            React
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="Django"
+                            >
+                            Django
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="SQL"
+                            >
+                            SQL
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="Git/GitHub"
+                            >
+                            Git / GitHub
+                        </label>
+
+                        <label class="skill-option">
+                            <input
+                                type="checkbox"
+                                name="skill"
+                                value="MongoDB"
+                            >
+                            MongoDB
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILL LEVEL -->
+
+                <div class="form-group">
+
+                    <label for="skillLevel">
+                        Overall Skill Level
+                    </label>
+
+                    <select
+                        id="skillLevel"
+                        name="skill_level"
+                    >
+
+                        <option value="">
+                            Select Skill Level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- OTHER SKILLS -->
+
+                <div class="form-group">
+
+                    <label for="otherSkills">
+                        Other Skills
+                    </label>
+
+                    <textarea
+                        id="otherSkills"
+                        name="other_skills"
+                        placeholder="e.g. Communication, Problem Solving..."
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <p
+                    id="skillsMessage"
+                    style="
+                        display:none;
+                        font-size:14px;
+                        margin:10px 0;
+                    "
+                ></p>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    id="skillsButton"
+                >
+                    Complete Profile →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="skills.js"></script>
+
+</body>
+
+</html>

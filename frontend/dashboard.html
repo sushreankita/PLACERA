@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | PLACERA</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        <div class="brand-icon">P</div>
+
+        <div>
+            <div class="brand-name">PLACERA</div>
+            <div class="brand-tagline">Your placement era starts here.</div>
+        </div>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/dashboard.html" class="nav-link active">
+            Dashboard
+        </a>
+
+        <a href="/applications.html" class="nav-link">
+            Applications
+        </a>
+
+        <a href="/analysis.html" class="nav-link">
+            Analysis
+        </a>
+
+        <a href="/profile.html" class="nav-link">
+            Profile
+        </a>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="dashboard-container">
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <section class="welcome-section">
+
+        <div class="welcome-content">
+
+            <p class="eyebrow">
+                STUDENT DASHBOARD
+            </p>
+
+            <h1>
+                Welcome back, <span id="studentName">Student</span> 👋
+            </h1>
+
+            <p class="welcome-text">
+                Track your placement journey, monitor your progress,
+                and improve your chances of getting placed.
+            </p>
+
+        </div>
+
+        <div class="welcome-badge">
+            <span>🎯</span>
+            <div>
+                <strong>Keep Going!</strong>
+                <small>Your placement journey matters.</small>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon applications-icon">
+                📋
+            </div>
+
+            <div class="stat-content">
+                <span class="stat-label">
+                    Total Applications
+                </span>
+
+                <h2 id="totalApplications">
+                    0
+                </h2>
+
+                <p>
+                    Applications tracked
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon interview-icon">
+                🎤
+            </div>
+
+            <div class="stat-content">
+                <span class="stat-label">
+                    Interviews
+                </span>
+
+                <h2 id="totalInterviews">
+                    0
+                </h2>
+
+                <p>
+                    Interview opportunities
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon offer-icon">
+                🏆
+            </div>
+
+            <div class="stat-content">
+                <span class="stat-label">
+                    Offers
+                </span>
+
+                <h2 id="totalOffers">
+                    0
+                </h2>
+
+                <p>
+                    Offers received
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon rejected-icon">
+                📊
+            </div>
+
+            <div class="stat-content">
+                <span class="stat-label">
+                    Rejections
+                </span>
+
+                <h2 id="totalRejected">
+                    0
+                </h2>
+
+                <p>
+                    Applications rejected
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <section class="section-block">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="section-eyebrow">
+                    QUICK ACTIONS
+                </p>
+
+                <h2>
+                    Manage Your Journey
+                </h2>
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+            <a href="/applications.html" class="action-card">
+
+                <div class="action-icon">
+                    ➕
+                </div>
+
+                <div>
+                    <h3>
+                        Add Application
+                    </h3>
+
+                    <p>
+                        Track a new placement application.
+                    </p>
+                </div>
+
+                <span class="action-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <a href="/applications.html" class="action-card">
+
+                <div class="action-icon">
+                    📋
+                </div>
+
+                <div>
+                    <h3>
+                        View Applications
+                    </h3>
+
+                    <p>
+                        Manage all your applications.
+                    </p>
+                </div>
+
+                <span class="action-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <a href="/analysis.html" class="action-card">
+
+                <div class="action-icon">
+                    📈
+                </div>
+
+                <div>
+                    <h3>
+                        Analyse Performance
+                    </h3>
+
+                    <p>
+                        Find your strengths and weaknesses.
+                    </p>
+                </div>
+
+                <span class="action-arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- PLACEMENT PROGRESS -->
+
+        <div class="panel progress-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="section-eyebrow">
+                        PLACEMENT PROGRESS
+                    </p>
+
+                    <h2>
+                        Your Progress
+                    </h2>
+                </div>
+
+                <span class="panel-icon">
+                    🎯
+                </span>
+
+            </div>
+
+
+            <div class="progress-summary">
+
+                <div class="progress-number">
+                    <span id="progressPercentage">
+                        0%
+                    </span>
+
+                    <small>
+                        Placement Progress
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                    style="width: 0%;">
+                </div>
+
+            </div>
+
+
+            <div class="progress-stages">
+
+                <div class="progress-stage">
+
+                    <span class="stage-dot completed">
+                        ✓
+                    </span>
+
+                    <div>
+                        <strong>
+                            Applications
+                        </strong>
+
+                        <small id="applicationStageCount">
+                            0 applications
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-stage">
+
+                    <span class="stage-dot">
+                        2
+                    </span>
+
+                    <div>
+                        <strong>
+                            Interviews
+                        </strong>
+
+                        <small id="interviewStageCount">
+                            0 interviews
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-stage">
+
+                    <span class="stage-dot">
+                        3
+                    </span>
+
+                    <div>
+                        <strong>
+                            Offers
+                        </strong>
+
+                        <small id="offerStageCount">
+                            0 offers
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATION STATUS -->
+
+        <div class="panel status-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="section-eyebrow">
+                        APPLICATION STATUS
+                    </p>
+
+                    <h2>
+                        Current Overview
+                    </h2>
+                </div>
+
+                <span class="panel-icon">
+                    📌
+                </span>
+
+            </div>
+
+
+            <div class="status-list">
+
+
+                <div class="status-row">
+
+                    <div class="status-info">
+
+                        <span class="status-dot applied">
+                        </span>
+
+                        <span>
+                            Applied
+                        </span>
+
+                    </div>
+
+                    <strong id="appliedCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <div class="status-info">
+
+                        <span class="status-dot interview">
+                        </span>
+
+                        <span>
+                            Interview
+                        </span>
+
+                    </div>
+
+                    <strong id="interviewCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <div class="status-info">
+
+                        <span class="status-dot offer">
+                        </span>
+
+                        <span>
+                            Offer
+                        </span>
+
+                    </div>
+
+                    <strong id="offerCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <div class="status-info">
+
+                        <span class="status-dot rejected">
+                        </span>
+
+                        <span>
+                            Rejected
+                        </span>
+
+                    </div>
+
+                    <strong id="rejectedCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECENT APPLICATIONS ================= -->
+
+    <section class="section-block">
+
+        <div class="section-heading recent-heading">
+
+            <div>
+
+                <p class="section-eyebrow">
+                    APPLICATION ACTIVITY
+                </p>
+
+                <h2>
+                    Recent Applications
+                </h2>
+
+            </div>
+
+            <a
+                href="/applications.html"
+                class="view-all-btn"
+            >
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="recent-table-wrapper">
+
+            <table class="recent-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Company
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Applied Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="recentApplications">
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="loading-cell"
+                        >
+                            Loading applications...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MOTIVATION ================= -->
+
+    <section class="motivation-section">
+
+        <div class="motivation-icon">
+            🚀
+        </div>
+
+        <div>
+
+            <p class="section-eyebrow">
+                YOUR PLACEMENT ERA
+            </p>
+
+            <h2>
+                Every application is a step forward.
+            </h2>
+
+            <p>
+                Track your progress, understand your mistakes,
+                improve your skills, and keep moving toward your offer.
+            </p>
+
+        </div>
+
+        <a
+            href="/analysis.html"
+            class="motivation-btn"
+        >
+            View Analysis →
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        <strong>PLACERA</strong>
+        <span>Your placement era starts here.</span>
+    </div>
+
+    <p>
+        © 2026 PLACERA. Placement tracking made simple.
+    </p>
+
+</footer>
+
+
+<script src="/dashboard.js"></script>
+
+</body>
+</html>

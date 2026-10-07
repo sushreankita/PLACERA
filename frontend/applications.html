@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications | PLACERA</title>
+    <link rel="stylesheet" href="/applications.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-icon">P</span>
+        <div>
+            <h2>PLACERA</h2>
+            <p>Your placement era starts here.</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/applications.html" class="active">Applications</a>
+        <a href="/analysis.html">Analysis</a>
+        <a href="/profile.html">Profile</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </nav>
+</header>
+
+
+<main class="container">
+
+    <section class="page-header">
+        <div>
+            <h1>My Applications</h1>
+            <p>Track and manage your placement journey.</p>
+        </div>
+
+        <div class="header-buttons">
+            <button type="button" id="addApplicationBtn" class="primary-btn">
+                + Add Application
+            </button>
+
+            <button type="button" id="csvBtn" class="secondary-btn">
+                Import CSV
+            </button>
+        </div>
+    </section>
+
+
+    <!-- SUMMARY CARDS -->
+    <section class="summary-grid">
+
+        <div class="summary-card">
+            <div class="summary-icon">📋</div>
+            <div>
+                <span>Total Applications</span>
+                <strong id="applicationCount">0</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">🎯</div>
+            <div>
+                <span>Interviews</span>
+                <strong id="interviewCount">0</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">🏆</div>
+            <div>
+                <span>Offers</span>
+                <strong id="offerCount">0</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">❌</div>
+            <div>
+                <span>Rejected</span>
+                <strong id="rejectedCount">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH + FILTER -->
+    <section class="filter-section">
+
+        <div class="search-box">
+            <span>🔍</span>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search company or role..."
+            >
+        </div>
+
+        <select id="statusFilter">
+            <option value="All">All Status</option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+
+        <select id="stageFilter">
+            <option value="All">All Stages</option>
+            <option value="Applied">Applied</option>
+            <option value="Shortlisted">Shortlisted</option>
+            <option value="Assessment">Assessment</option>
+            <option value="Technical">Technical</option>
+            <option value="HR">HR</option>
+            <option value="Offer">Offer</option>
+        </select>
+
+    </section>
+
+
+    <!-- TABLE -->
+    <section class="table-card">
+
+        <div class="table-header">
+            <div>
+                <h2>Placement Applications</h2>
+                <p>Monitor your applications and skill compatibility.</p>
+            </div>
+
+            <button type="button" id="refreshBtn" class="refresh-btn">
+                ↻ Refresh
+            </button>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Required Skills</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+                        <th>Stage</th>
+                        <th>Skill Match</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="applicationTable">
+                    <tr>
+                        <td colspan="8" class="loading-cell">
+                            Loading applications...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+            <div>📭</div>
+            <h3>No applications found</h3>
+            <p>Add your first placement application to get started.</p>
+            <button type="button" id="emptyAddBtn" class="primary-btn">
+                + Add Application
+            </button>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ADD / EDIT APPLICATION MODAL -->
+<div id="applicationModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Add Application</h2>
+                <p>Enter your placement application details.</p>
+            </div>
+
+            <button type="button" class="close-btn" id="closeModalBtn">
+                ×
+            </button>
+        </div>
+
+
+        <form id="applicationForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="company">Company *</label>
+                    <input
+                        type="text"
+                        id="company"
+                        placeholder="e.g. TCS"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role *</label>
+                    <input
+                        type="text"
+                        id="role"
+                        placeholder="e.g. Python Developer"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="requiredSkills">
+                        Required Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="requiredSkills"
+                        placeholder="e.g. Python, Django, SQL, HTML"
+                    >
+
+                    <small>
+                        Separate skills using commas.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="appliedDate">Applied Date *</label>
+                    <input
+                        type="date"
+                        id="appliedDate"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status *</label>
+
+                    <select id="status" required>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="stage">Current Stage *</label>
+
+                    <select id="stage" required>
+                        <option value="Applied">Applied</option>
+                        <option value="Shortlisted">Shortlisted</option>
+                        <option value="Assessment">Assessment</option>
+                        <option value="Technical">Technical</option>
+                        <option value="HR">HR</option>
+                        <option value="Offer">Offer</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="rejectionReason">
+                        Rejection Reason
+                    </label>
+
+                    <select id="rejectionReason">
+                        <option value="">Not Applicable</option>
+                        <option value="Aptitude">Aptitude</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Technical Interview">
+                            Technical Interview
+                        </option>
+                        <option value="HR">HR</option>
+                        <option value="Resume">Resume</option>
+                        <option value="Eligibility">Eligibility</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div id="formMessage" class="form-message"></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelBtn"
+                    class="secondary-btn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveApplicationBtn"
+                    class="primary-btn"
+                >
+                    Save Application
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- CSV MODAL -->
+<div id="csvModal" class="modal">
+
+    <div class="modal-content small-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2>Import Applications</h2>
+                <p>Upload your CSV file.</p>
+            </div>
+
+            <button type="button" class="close-btn" id="closeCSVBtn">
+                ×
+            </button>
+        </div>
+
+
+        <div class="csv-info">
+
+            <p>
+                Your CSV should contain:
+            </p>
+
+            <code>
+                company,role,required_skills,applied_date,status,stage,rejection_reason
+            </code>
+
+            <div class="csv-example">
+                <strong>Example:</strong>
+
+                <p>
+                    TCS,Python Developer,"Python,Django,SQL",2026-09-27,Applied,Applied,
+                </p>
+            </div>
+
+        </div>
+
+
+        <input
+            type="file"
+            id="csvFile"
+            accept=".csv"
+        >
+
+        <div id="csvMessage" class="form-message"></div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                id="cancelCSVBtn"
+                class="secondary-btn"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                id="importCSVBtn"
+                class="primary-btn"
+            >
+                Import CSV
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- SKILL MATCH MODAL -->
+<div id="skillMatchModal" class="modal">
+
+    <div class="modal-content skill-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Skill Match Analysis</h2>
+                <p id="skillMatchTitle">Application</p>
+            </div>
+
+            <button
+                type="button"
+                class="close-btn"
+                id="closeSkillMatchBtn"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="match-score">
+
+            <div class="score-circle">
+                <span id="skillMatchPercentage">0%</span>
+            </div>
+
+            <h3 id="skillMatchMessage">
+                Skill compatibility
+            </h3>
+
+        </div>
+
+
+        <div class="skill-columns">
+
+            <div class="skill-box matched-box">
+
+                <h3>✓ Your Skills</h3>
+
+                <div id="studentSkillsMatch" class="skill-list">
+                    No matching skills
+                </div>
+
+            </div>
+
+
+            <div class="skill-box missing-box">
+
+                <h3>⚠ Missing Skills</h3>
+
+                <div id="missingSkills" class="skill-list">
+                    No missing skills
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JOURNEY MODAL -->
+<div id="journeyModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Application Journey</h2>
+                <p id="journeyCompany">Placement Journey</p>
+            </div>
+
+            <button
+                type="button"
+                class="close-btn"
+                id="closeJourneyBtn"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="journey">
+
+            <div class="journey-step" id="journeyApplied">
+                <div class="journey-dot">1</div>
+                <div>
+                    <strong>Applied</strong>
+                    <p>Application submitted</p>
+                </div>
+            </div>
+
+            <div class="journey-step" id="journeyShortlisted">
+                <div class="journey-dot">2</div>
+                <div>
+                    <strong>Shortlisted</strong>
+                    <p>Shortlisted for next round</p>
+                </div>
+            </div>
+
+            <div class="journey-step" id="journeyAssessment">
+                <div class="journey-dot">3</div>
+                <div>
+                    <strong>Assessment</strong>
+                    <p>Assessment round</p>
+                </div>
+            </div>
+
+            <div class="journey-step" id="journeyTechnical">
+                <div class="journey-dot">4</div>
+                <div>
+                    <strong>Technical</strong>
+                    <p>Technical interview</p>
+                </div>
+            </div>
+
+            <div class="journey-step" id="journeyHR">
+                <div class="journey-dot">5</div>
+                <div>
+                    <strong>HR</strong>
+                    <p>HR interview</p>
+                </div>
+            </div>
+
+            <div class="journey-step" id="journeyOffer">
+                <div class="journey-dot">6</div>
+                <div>
+                    <strong>Offer</strong>
+                    <p>Offer received</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/applications.js"></script>
+
+</body>
+</html>
